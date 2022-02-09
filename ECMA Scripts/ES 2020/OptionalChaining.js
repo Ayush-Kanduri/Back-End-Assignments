@@ -10,6 +10,7 @@ const creature = {
 	print: function () {
 		console.log("\nMammal");
 	},
+	a: [1, 2, 3],
 };
 
 // const name1 = creature.mammal.human.male.name;
@@ -48,3 +49,12 @@ if (name1) {
 //Check if print exists & if it exists, then check if print is a function ()
 //If yes then call it else do nothing
 creature.print?.();
+
+console.log(creature?.a);
+//Check if 'a' exists & if it exists, then check if it is an array
+//If yes then print a[0] it else undefined
+// console.log(creature?.a[0]);
+console.log(creature?.a?.[0]);
+
+console.log(creature?.b);
+console.log(creature?.b?.[9]);
