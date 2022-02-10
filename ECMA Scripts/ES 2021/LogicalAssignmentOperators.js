@@ -5,7 +5,8 @@
 
 let obj = {
 	a: 2,
-	// a: 0 null undefined "" NaN,
+	// a: 0 null undefined "" NaN false,
+	//a: true,
 };
 function True(obj) {
 	obj.a &&= 5;
@@ -18,7 +19,7 @@ console.log(obj.a);
 
 let obj2 = {
 	// b: 2,
-	// b: 0 null undefined "" NaN,
+	// b: 0 null undefined "" NaN false,
 	b: NaN,
 };
 function False(obj2) {
@@ -26,3 +27,18 @@ function False(obj2) {
 }
 False(obj2);
 console.log(obj2.b);
+
+//Nullish Coalescing Operator
+//If a is null or undefined, then assign value to a.
+//Else do nothing.
+
+let obj3 = {
+	// c: 2,
+	// c: null undefined,
+	c: null,
+};
+function Nullish(obj3) {
+	obj3.c ??= 15;
+}
+Nullish(obj3);
+console.log(obj3.c);
