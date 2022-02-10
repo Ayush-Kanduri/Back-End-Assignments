@@ -1,29 +1,32 @@
 {
-  "name": "assignments",
-  "version": "1.0.0",
-  "description": "This repository contains all the assignments from my online learning course.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "ayush kanduri",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ayush-Kanduri/Back-End-Assignments.git"
-  },
-  "keywords": [
-    "nodejs"
-  ],
-  "bugs": {
-    "url": "https://github.com/Ayush-Kanduri/Back-End-Assignments/issues"
-  },
-  "homepage": "https://github.com/Ayush-Kanduri/Back-End-Assignments#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.2",
-    "latest-version": "^6.0.0",
-    "mongoose": "^6.2.1",
-    "nodemon": "^2.0.15"
-  }
+	"name": "assignments",
+	"version": "1.0.0",
+	"description": "This repository contains all the assignments from my online learning course.",
+	"main": "index.js",
+	"types": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "ayush kanduri",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Ayush-Kanduri/Back-End-Assignments.git"
+	},
+	"keywords": [
+		"nodejs"
+	],
+	"bugs": {
+		"url": "https://github.com/Ayush-Kanduri/Back-End-Assignments/issues"
+	},
+	"homepage": "https://github.com/Ayush-Kanduri/Back-End-Assignments#readme",
+	"dependencies": {
+		"cross-fetch": "^3.1.5",
+		"ejs": "^3.1.6",
+		"express": "^4.17.2",
+		"latest-version": "^6.0.0",
+		"mongoose": "^6.2.1",
+		"node-fetch": "^3.2.0",
+		"nodemon": "^2.0.15"
+	}
 }
