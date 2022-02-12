@@ -1,0 +1,11 @@
+const requestHandler = (request, response) => {
+	console.log(request.url);
+	response.writeHead(200, { "content-type": "text/html" });
+	fs.readFile("./index.html", (err, data) => {
+		if (err) {
+			console.log("ERROR:", err);
+			return response.end("<h1>Error</h1>");
+		}
+		return response.end(data);
+	});
+};

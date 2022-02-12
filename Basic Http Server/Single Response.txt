@@ -1,0 +1,10 @@
+const requestHandler = (request, response) => {
+	console.log(request.url);
+	response.end("Hello World");
+};
+
+const requestHandler = (request, response) => {
+	console.log(request.url);
+	response.writeHead(200, { "content-type": "text/html" });
+	response.end("<h1>Hello World</h1>");
+};

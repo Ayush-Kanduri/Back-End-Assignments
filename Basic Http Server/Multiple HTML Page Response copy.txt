@@ -1,0 +1,5 @@
+const requestHandler = (request, response) => {
+	console.log(request.url);
+	response.writeHead(200, { "content-type": "text/html" });
+	
+};

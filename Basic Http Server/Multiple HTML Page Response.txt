@@ -1,0 +1,22 @@
+const requestHandler = (request, response) => {
+	console.log(request.url);
+	response.writeHead(200, { "content-type": "text/html" });
+	let filepath;
+	switch (request.url) {
+		case "/":
+			filepath = "./index.html";
+			break;
+		case "/profile":
+			filepath = "./profile.html";
+			break;
+		default:
+			filepath = "./404.html";
+	}
+	fs.readFile(filepath, (err, data) => {
+		if (err) {
+			console.log("ERROR:", err);
+			return response.end("<h1>Error</h1>");
+		}
+		return response.end(data);
+	});
+};
