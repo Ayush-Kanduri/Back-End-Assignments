@@ -12,7 +12,7 @@ const requestHandler = (request, response) => {
 };
 
 //Create NodeJS Server
-const server = http.createServer();
+const server = http.createServer(requestHandler);
 
 //Run the NodeJS Server
 server.listen(port, (err) => {
