@@ -1,0 +1,7 @@
+app.get("/", (request, response) => {
+	response.send(`Express Server is Up & Running Successfully on Port ${port}`);
+});
+
+app.get("/", (request, response) => {
+	response.send(`<h1>Express Server is Up & Running Successfully on Port ${port}</h1>`);
+});
