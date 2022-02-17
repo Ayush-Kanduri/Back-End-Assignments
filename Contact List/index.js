@@ -11,6 +11,7 @@ const app = express();
 app.set("view engine", "ejs");
 //Set Up Template Engine Views Folder Path (..../views)
 app.set("views", path.join(__dirname, "views"));
+console.log(path.join(__dirname, "views"));
 
 //Home Page Controller
 app.get("/", (request, response) => {
@@ -23,10 +24,13 @@ app.get("/", (request, response) => {
 	////Request information from the clients
 	// console.log(request);
 
-	//Send the Response to the clients
-	response.send(
-		`<h1>Express Server is Up & Running Successfully on Port ${port}</h1>`
-	);
+	// //Send the Response to the clients
+	// response.send(
+	// 	`<h1>Express Server is Up & Running Successfully on Port ${port}</h1>`
+	// );
+
+	//Send the EJS View Response to the clients
+	return response.render("home");
 });
 
 //Run the ExpressJS Server
