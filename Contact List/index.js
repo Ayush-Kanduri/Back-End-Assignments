@@ -28,7 +28,7 @@ let contactList = [
 	},
 ];
 
-//Home Page Controller
+//Home Page URL Controller
 app.get("/", (request, response) => {
 	//Send the EJS View Response to the clients
 	return response.render("home", {
@@ -37,11 +37,16 @@ app.get("/", (request, response) => {
 	});
 });
 
-//Practice Page Controller
+//Practice Page URL Controller
 app.get("/practice", (request, response) => {
 	return response.render("practice", {
 		title: "Let's Play with EJS",
 	});
+});
+
+//Create-Contact Form URL Controller
+app.post("/create-contact", (request, response) => {
+	return response.redirect("/practice");
 });
 
 //Run the ExpressJS Server
