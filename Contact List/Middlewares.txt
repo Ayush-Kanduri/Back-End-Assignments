@@ -1,0 +1,2 @@
+//Middleware - URL Encoder
+app.use(express.urlencoded());

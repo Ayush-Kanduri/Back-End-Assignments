@@ -11,8 +11,10 @@ const app = express();
 app.set("view engine", "ejs");
 //Set Up Template Engine Views Folder Path (..../views)
 app.set("views", path.join(__dirname, "views"));
+//Middleware - URL Encoder
+app.use(express.urlencoded());
 
-//contactList Array of Objects
+//Contact List Array of Objects to store the data
 let contactList = [
 	{
 		name: "Ayush",
@@ -44,9 +46,10 @@ app.get("/practice", (request, response) => {
 	});
 });
 
-//Create-Contact Form URL Controller
+//Create-Contact Page Form URL Controller
 app.post("/create-contact", (request, response) => {
-	return response.redirect("/practice");
+	contactList.push(request.body);
+	return response.redirect("back");
 });
 
 //Run the ExpressJS Server
