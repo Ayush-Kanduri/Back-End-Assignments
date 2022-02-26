@@ -13,6 +13,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 //Middleware - URL Encoder
 app.use(express.urlencoded());
+//Middleware - Static Files
+app.use(express.static("assets"));
 
 //Contact List Array of Objects to store the data
 let contactList = [
