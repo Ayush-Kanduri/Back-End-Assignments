@@ -12,11 +12,28 @@ app.set("view engine", "ejs");
 //Set Up Template Engine Views Folder Path (..../views)
 app.set("views", path.join(__dirname, "views"));
 
+//contactList Array of Objects
+let contactList = [
+	{
+		name: "Ayush",
+		phone: "1234567890",
+	},
+	{
+		name: "Aman",
+		phone: "1234567891",
+	},
+	{
+		name: "Akshay",
+		phone: "1234567892",
+	},
+];
+
 //Home Page Controller
 app.get("/", (request, response) => {
 	//Send the EJS View Response to the clients
 	return response.render("home", {
 		title: "Contact List",
+		contact_list: contactList,
 	});
 });
 
