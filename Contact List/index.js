@@ -43,6 +43,7 @@ app.get("/", (request, response) => {
 
 //Practice Page URL Controller
 app.get("/practice", (request, response) => {
+	//Send the EJS View Response to the clients
 	return response.render("practice", {
 		title: "Let's Play with EJS",
 	});
@@ -50,7 +51,25 @@ app.get("/practice", (request, response) => {
 
 //Create-Contact Page Form URL Controller
 app.post("/create-contact", (request, response) => {
+	//Add a new Contact Object into the Contact List Array
 	contactList.push(request.body);
+	//Redirect to the Home Page URL where the updated Contact List is displayed
+	return response.redirect("back");
+});
+
+//Delete-Contact Page URL Controller
+app.get("/delete-contact/", (request, response) => {
+	//Get the Phone Number from the Query Param URL
+	let phone = request.query.phone;
+	//Loop through the Contact List Array to find the Contact Object with the Phone Number
+	let contactIndex = contactList.findIndex(
+		(contact) => contact.phone === phone
+	);
+	//Delete the Contact Object from the Contact List Array
+	if (contactIndex !== -1) {
+		contactList.splice(contactIndex, 1);
+	}
+	//Redirect to the Home Page URL where the updated Contact List is displayed
 	return response.redirect("back");
 });
 
