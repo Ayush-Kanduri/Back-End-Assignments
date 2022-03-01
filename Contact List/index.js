@@ -39,10 +39,17 @@ let contactList = [
 
 //Home Page URL Controller
 app.get("/", (request, response) => {
-	//Send the EJS View Response to the clients
-	return response.render("home", {
-		title: "Contact List",
-		contact_list: contactList,
+	//Fetches the Contact List from the Database based on any condition or all of them.
+	Contact.find({}, (err, contacts) => {
+		if (err) {
+			console.log("Error in fetching the contacts from DB");
+			return;
+		}
+		//Send the EJS View Response to the clients
+		return response.render("home", {
+			title: "Contact List",
+			contact_list: contacts,
+		});
 	});
 });
 
@@ -76,18 +83,18 @@ app.post("/create-contact", (request, response) => {
 
 //Delete-Contact Page URL Controller
 app.get("/delete-contact", (request, response) => {
-	//Get the Phone Number from the Query Param URL
-	let phone = request.query.phone;
-	//Loop through the Contact List Array to find the Contact Object with the Phone Number
-	let contactIndex = contactList.findIndex(
-		(contact) => contact.phone === phone
-	);
-	//Delete the Contact Object from the Contact List Array
-	if (contactIndex !== -1) {
-		contactList.splice(contactIndex, 1);
-	}
-	//Redirect to the Home Page URL where the updated Contact List is displayed
-	return response.redirect("back");
+	//Get the ID from the Query Param URL
+	let id = request.query.id;
+	//Find the Contact in the DB based on the ID & then delete it.
+	Contact.findByIdAndDelete(id, (err) => {
+		//No 2nd argument since we are only deleting a Contact.
+		if (err) {
+			console.log("Error in Deleting the Contact");
+			return;
+		}
+		//Redirect to the Home Page URL where the updated Contact List is displayed
+		return response.redirect("back");
+	});
 });
 
 //Run the ExpressJS Server
