@@ -4,6 +4,10 @@ const express = require("express");
 const port = 8000;
 //Require Module Path for Directory
 const path = require("path");
+//Require the MongoDB Database File from Mongoose.js
+const db = require("./config/mongoose");
+//Require the DB Model/Collection of the Schema
+const Contact = require("./models/contact");
 //Create Express App for Request-Response Cycle & to create the Express Server
 const app = express();
 
@@ -11,6 +15,7 @@ const app = express();
 app.set("view engine", "ejs");
 //Set Up Template Engine Views Folder Path (..../views)
 app.set("views", path.join(__dirname, "views"));
+
 //Middleware - URL Encoder
 app.use(express.urlencoded());
 //Middleware - Static Files
@@ -51,14 +56,26 @@ app.get("/practice", (request, response) => {
 
 //Create-Contact Page Form URL Controller
 app.post("/create-contact", (request, response) => {
-	//Add a new Contact Object into the Contact List Array
-	contactList.push(request.body);
-	//Redirect to the Home Page URL where the updated Contact List is displayed
-	return response.redirect("back");
+	//Add a new Contact into the DB
+	Contact.create(
+		{
+			name: request.body.name,
+			phone: request.body.phone,
+		},
+		(err, newContact) => {
+			if (err) {
+				console.log("Error in Creating a Contact");
+				return;
+			}
+			console.log("*******", newContact, "*******");
+			//Redirect to the Home Page URL where the updated Contact List is displayed
+			return response.redirect("back");
+		}
+	);
 });
 
 //Delete-Contact Page URL Controller
-app.get("/delete-contact/", (request, response) => {
+app.get("/delete-contact", (request, response) => {
 	//Get the Phone Number from the Query Param URL
 	let phone = request.query.phone;
 	//Loop through the Contact List Array to find the Contact Object with the Phone Number

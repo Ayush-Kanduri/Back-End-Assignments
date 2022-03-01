@@ -7,7 +7,7 @@
 </a>
 
 //Delete-Contact Page URL Controller
-app.get("/delete-contact/", (request, response) => {
+app.get("/delete-contact", (request, response) => {
 	//Get the Phone Number from the Query Param URL
 	console.log(request.query);
 	console.log(request.query.phone);
