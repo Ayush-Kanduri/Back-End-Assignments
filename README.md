@@ -1,2 +1,2 @@
 # Back-End-Assignments
-This repository contains all the assignments from my online learning course.
+This repository contains all the Back End Assignments from my online learning courses.
